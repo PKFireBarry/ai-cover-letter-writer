@@ -7,17 +7,18 @@ const openai = new OpenAIApi(configuration);
 export default async function handler(req: { body: { prompt: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { text?: any; error?: string; }): void; new(): any; }; }; }) {
   const prompt = req.body.prompt;
   if (typeof prompt === "string") {
-    const response = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: req.body.prompt,
       temperature: 0.2,
+      max_tokens: 4000,
       n: 1,
-    });
 
-    res.status(200).json({ text: response.data.choices[0].message });
-    
-    console.log('Your Cover Letter:',response.data.choices[0].message);
+    })
+
+    console.log(response.data);
+    res.status(200).json({ text: response.data.choices[0].text })
   } else {
-    res.status(400).json({ error: "Invalid prompt provided." });
+    res.status(200).json({ text: "Invalid prompt provided." })
   }
 }
