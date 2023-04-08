@@ -7,18 +7,21 @@ import React, { useEffect, useState } from 'react';
 function AllLetters() {
 
 
-  const [letters, setLetters] = useState<{
-    createdAt: any;
-    coverLetter: string; 
-    id: string; 
-    Job_description: string;
-    company: string;
-    location: string;
-    job_title: string;
-    user: string;
-    userImage: string;
-    email: string;
-  }[]>([]);
+  const [letters, setLetters] = useState<
+  {
+    createdAt?: any;
+    coverLetter?: string; 
+    id?: string; 
+    Job_description?: string;
+    company?: string;
+    location?: string;
+    job_title?: string;
+    user?: string;
+    userImage?: string;
+    email?: string;
+  }[]
+>([]);
+
   
   
 
