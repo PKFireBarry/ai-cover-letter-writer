@@ -11,7 +11,7 @@ function AllLetters() {
   {
     createdAt?: any;
     coverLetter?: string; 
-    id?: string; 
+    id?: any; 
     Job_description?: string;
     company?: string;
     location?: string;

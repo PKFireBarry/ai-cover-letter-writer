@@ -13,7 +13,6 @@ export default async function handler(req: { body: { prompt: any; }; }, res: { s
       temperature: 0.2,
       max_tokens: 4000,
       n: 1,
-
     })
 
     console.log(response.data);
