@@ -11,7 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 function AllLetters() {
   const [letters, setLetters] = useState<
