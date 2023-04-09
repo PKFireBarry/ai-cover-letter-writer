@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 import React, { useState, useRef, useEffect } from "react";
 import GenerateLetter from "./components/GenerateLetter";
 import Login from "./components/Login";
+import {auth} from '@/firebase'
 
 const cookies = new Cookies();
 
@@ -40,6 +41,10 @@ if (!isAuth) {
       <div className="w-screen h-screen">
       <div className="flex h-12 justify-between items-center p-8">
       <h1>Ai Coverletter Writer</h1>
+      <div className='flex '>
+        <img src={auth.currentUser?.photoURL} alt='logo' className='w-6 h-6'></img>        
+        <h1>User:{auth.currentUser?.displayName}</h1>
+      </div>
       <button onClick={logout}>Logout</button>        
       </div>
       {/* the generate letters component */}

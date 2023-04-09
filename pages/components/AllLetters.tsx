@@ -1,11 +1,10 @@
 'use client'
 
-import { db } from '@/firebase';
-import { collection, onSnapshot, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
+import { db, auth } from '@/firebase';
+import { collection, onSnapshot, deleteDoc, doc, orderBy, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 
 function AllLetters() {
-
 
   const [letters, setLetters] = useState<
   {
@@ -22,13 +21,9 @@ function AllLetters() {
   }[]
 >([]);
 
-  
-  
-
-
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      query(collection(db, "coverletter"), orderBy("createdAt", "desc")),
+      query(collection(db, "coverletter"), where("email",'==', auth.currentUser?.email), orderBy("createdAt", "desc")),
       (snapshot) => {
         const lettersData: ((prevState: never[]) => never[]) | { id: string }[] = [];
         snapshot.forEach((doc) => {
@@ -40,8 +35,6 @@ function AllLetters() {
     return unsubscribe;
   }, []);
   
-  
-
   const handleDelete = async (id: string) => {
     try {
       await deleteDoc(doc(db, "coverletter", id));
@@ -49,8 +42,6 @@ function AllLetters() {
       console.error("Error deleting document: ", error);
     }
   }
-
-
 
   return (
     <div className="">
