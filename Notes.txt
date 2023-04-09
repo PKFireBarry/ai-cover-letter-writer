@@ -8,11 +8,19 @@
 		- set a check so that only you can see your cover letters in the database
 	- add a loading notification to the handlesubmit function
 		- get packages
-		- 
 - then save the response and all the information to the database 
 - style the app with tailwindcss
+	- collaspe all the inforamtion used to generate the cover letter in a arcodian
+	- make the form float in the center on desktop and not on mobile
+	- style the nav bar and add github link
+- Add A toggle for how creative the cover letter should be
+	-
 - debug any error and securty flaws
+	- fix env.local file
 - deploy to production
+
+
+
 
 
 
