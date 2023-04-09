@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 function AllLetters() {
   const [letters, setLetters] = useState<
@@ -29,7 +30,14 @@ function AllLetters() {
     }[]
   >([]);
 
+  const router = useRouter();
+
   useEffect(() => {
+    if (!auth.currentUser) {
+      toast.error("You must be logged in to view this page");
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       query(
         collection(db, "coverletter"),
@@ -37,17 +45,23 @@ function AllLetters() {
         orderBy("createdAt", "desc")
       ),
       (snapshot) => {
-        const lettersData:
-          | ((prevState: never[]) => never[])
-          | { id: string }[] = [];
-        snapshot.forEach((doc) => {
-          lettersData.push({ id: doc.id, ...doc.data() });
+        const lettersData = snapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
         });
         setLetters(lettersData);
       }
     );
-    return unsubscribe;
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
+
+  if (!auth.currentUser) {
+    return <p>You must be logged in to view this page</p>;
+  }
+  
+
 
   const handleDelete = async (id: string) => {
     try {

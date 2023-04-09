@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 const cookies = new Cookies();
 
 export default function Home() {
-  const [isAuth, setIsAuth] = useState(cookies.get("auth_user") || false);
+  const [isAuth, setIsAuth] = useState(cookies.get("auth_user") || null);
 
   useEffect(() => {
     cookies.set("auth_user", isAuth);
@@ -23,7 +23,7 @@ export default function Home() {
     window.location.reload();
   };
 
-  if (!isAuth) {
+  if (!isAuth == true) {
     return (
       <div>
         <Login setIsAuth={setIsAuth} />
