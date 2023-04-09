@@ -119,7 +119,7 @@ function AllLetters() {
                   />
                 </div>
                 <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"
+                  className="bg-red-500 hover:bg-red-700 text-white mt-4 font-semibold py-2 px-4 rounded-md shadow-sm"
                   onClick={() => handleDelete(letter.id)}
                 >
                   Delete
