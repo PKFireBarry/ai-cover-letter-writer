@@ -57,10 +57,6 @@ export default function Home() {
               // Default options for specific types
               success: {
                 duration: 5000,
-                theme: {
-                  primary: "green",
-                  secondary: "black",
-                },
               },
             }}
           />
@@ -70,10 +66,11 @@ export default function Home() {
                 <h1 className="text-xl font-bold">Ai Coverletter Writer</h1>
                 <div className="flex items-center space-x-4">
                   <img
-                    src={auth.currentUser?.photoURL}
+                    src={auth.currentUser?.photoURL ?? undefined}
                     alt="logo"
                     className="w-8 h-8 rounded-full hidden sm:inline-block"
                   />
+
                   <h1 className="text-sm font-medium hidden sm:inline-block">
                     User: {auth.currentUser?.displayName}
                   </h1>
