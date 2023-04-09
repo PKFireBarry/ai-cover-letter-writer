@@ -11,11 +11,11 @@ export default async function handler(req: { body: { prompt: any; }; }, res: { s
       model: "text-davinci-003",
       prompt: req.body.prompt,
       temperature: 0.2,
-      max_tokens: 4000,
+      max_tokens: 3000,
       n: 1,
     })
 
-    console.log(response.data);
+    console.log(response);
     res.status(200).json({ text: response.data.choices[0].text })
   } else {
     res.status(200).json({ text: "Invalid prompt provided." })

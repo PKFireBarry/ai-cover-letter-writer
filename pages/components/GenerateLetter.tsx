@@ -30,7 +30,12 @@ const GenerateLetter = () => {
       setIsLoading(true);
       
       // Combine all the data into a single object so that it can be sent to the API to create a new cover letter
-      const prompt = `Write me a cover letter for ${jobTitle} at ${company} in ${location}. use my resume here to use for my skills and expereince ${resume as string}`;
+      let cleanstring = resume;
+      cleanstring.replace(/[^a-zA-Z0-9 ]/g, '');
+      cleanstring.trim();
+      const cleanedResume = cleanstring
+
+      const prompt = `Write me a cover letter for ${jobTitle} at ${company} in ${location}. ${job}. use my resume here to use for my skills and expereince ${cleanedResume}.`;
       
       // Send input data to OpenAI API and wait for response
       const response = await fetch("/api/hello", {
@@ -60,11 +65,11 @@ const GenerateLetter = () => {
         userImage: auth.currentUser.photoURL,
         email: auth.currentUser.email,
       }).then(() => {
-        setJob("");
-        setCompany("");
-        setLocation("");
-        setJobTitle("");
-        setResume("");
+        //setJob("");
+        //setCompany("");
+        //setLocation("");
+        //setJobTitle("");
+        //setResume("");
         setIsLoading(false);
         toast.success("Cover letter generated successfully and saved to database!");
       });
@@ -98,7 +103,7 @@ const GenerateLetter = () => {
         </label>
         <label>
           Resume:
-          <textarea onChange={(e) => setResume(e.target.value)} />
+          <textarea  value={resume} onChange={(e) => setResume(e.target.value)} />
         </label>
         <button type="submit">Submit</button>
       </form>
