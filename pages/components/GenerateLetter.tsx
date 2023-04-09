@@ -129,7 +129,7 @@ const GenerateLetter = () => {
             <span className="text-gray-800 font-semibold">Job Description</span>
             <textarea
               className="form-textarea block w-full mt-1 rounded-md shadow-sm"
-              rows="10"
+              rows={15}
               placeholder="Provide a brief description of the job"
               required
               value={job}
@@ -140,7 +140,7 @@ const GenerateLetter = () => {
             <span className="text-gray-800 font-semibold">Resume</span>
             <textarea
               className="form-textarea block w-full mt-1 rounded-md shadow-sm"
-              rows="10"
+              rows={15}
               placeholder="Copy and Paste Your Resume Information Here"
               value={resume}
               onChange={(e) => setResume(e.target.value)}

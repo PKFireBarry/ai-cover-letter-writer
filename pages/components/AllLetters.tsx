@@ -114,7 +114,7 @@ function AllLetters() {
                 <div className="bg-slate-200">
                   <textarea
                     className="w-full text-lg bg-slate-200"
-                    rows="25"
+                    rows={25}
                     value={letter.coverLetter}
                   />
                 </div>
