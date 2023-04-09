@@ -64,11 +64,11 @@ const GenerateLetter = () => {
         userImage: auth.currentUser.photoURL,
         email: auth.currentUser.email,
       }).then(() => {
-        //setJob("");
-        //setCompany("");
-        //setLocation("");
-        //setJobTitle("");
-        //setResume("");
+        setJob("");
+        setCompany("");
+        setLocation("");
+        setJobTitle("");
+        setResume("");
         setIsLoading(false);
         toast.success("ChatGPT has responded!")
       });
@@ -86,54 +86,70 @@ const GenerateLetter = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className=" md:w-1/2 ">
+    <div className="flex flex-col md:flex-row bg-slate-200">
+      <div className=" md:w-1/3 m-4 items-center">
         <form className="flex flex-col justify-center " onSubmit={handleSubmit}>
-          <label>
-            Company:
-            <input
-              type="text"
-              required
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-            />
-          </label>
-          <label>
-            Location:
-            <input
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </label>
-          <label>
-            Job title:
-            <input
-              type="text"
-              required
-              value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            Job description:
-            <textarea
-              required
-              value={job}
-              onChange={(e) => setJob(e.target.value)}
-            />
-          </label>
-          <label>
-            Resume:
-            <textarea
-              value={resume}
-              onChange={(e) => setResume(e.target.value)}
-            />
-          </label>
-          <button type="submit">Submit</button>
+        <div className="flex items-center space-x-4">
+          <label className="flex-1">
+      <span className="text-gray-800 font-semibold">Company</span>
+      <input
+        type="text"
+        className="form-input block w-full mt-1 rounded-md shadow-sm"
+        placeholder=" Meta "
+        required
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+        />
+    </label>
+    <label className="flex-1">
+      <span className="text-gray-800 font-semibold">Location</span>
+      <input
+        type="text"
+        className="form-input block w-full mt-1 rounded-md shadow-sm"
+        placeholder="San Francisco, CA"
+        required
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+      />
+    </label>
+        </div>
+        <label className="flex-1">
+      <span className="text-gray-800 font-semibold">Job Title: </span>
+      <input
+        type="text"
+        className="form-input block w-full mt-1 rounded-md shadow-sm"
+        placeholder="Full Stack Developer"
+        required
+        value={jobTitle}
+        onChange={(e) => setJobTitle(e.target.value)}
+      />
+    </label>
+    <label>
+    <span className="text-gray-800 font-semibold">Job Description</span>
+    <textarea
+      className="form-textarea block w-full mt-1 rounded-md shadow-sm"
+      rows="6"
+      placeholder="Provide a brief description of the job"
+      required
+      value={job}
+      onChange={(e) => setJob(e.target.value)}
+    ></textarea>
+  </label>
+  <label>
+    <span className="text-gray-800 font-semibold">Resume</span>
+    <textarea
+      className="form-textarea block w-full mt-1 rounded-md shadow-sm"
+      rows="10"
+      placeholder="Copy and Paste Your Resume Information Here"
+      
+      value={resume}
+      onChange={(e) => setResume(e.target.value)}
+    ></textarea>
+  </label>
+          <button className="bg-blue-500 pt-4 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm" type="submit">Generate Cover letter!</button>
         </form>
       </div>
-      <div className=" md:w-1/2">
+      <div className=" md:w-2/3">
         <AllLetters />
       </div>
     </div>
