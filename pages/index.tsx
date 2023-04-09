@@ -79,7 +79,7 @@ export default function Home() {
                   </h1>
 
                   <a
-                    href="https://github.com/your-username"
+                    href="https://github.com/PKFireBarry/ai-cover-letter-writer"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-gray-900"

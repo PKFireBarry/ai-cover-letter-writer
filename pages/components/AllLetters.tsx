@@ -64,7 +64,7 @@ function AllLetters() {
       <div className="bg-slate-300">
         {letters.map((letter) => (
           <div
-            className="flex justify-center flex-col border-4"
+            className="flex justify-center flex-col border-4 p-4"
             key={letter.id}
           >
             <div className="flex flex-row items-center justify-between border-b-2 border-black p-2">
@@ -74,7 +74,7 @@ function AllLetters() {
                   className="w-10 h-10 mr-2"
                   alt={letter.user}
                 />
-                <p>{letter.user}</p>
+                <p className="font-bold">{letter.user}</p>
               </div>
 
               <div>
@@ -86,31 +86,30 @@ function AllLetters() {
             </div>
 
             <details className="bg-slate-100 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-              <summary className="hover:underline">Document Information</summary>
+              <summary className="hover:underline">
+                Document Information
+              </summary>
               <div>
-              <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md  mb-2">
-                <summary className="hover:underline">Company</summary>
-                <p className="pt-4">{letter.company}</p>
-              </details>
-              <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                <summary className="hover:underline">Location</summary>
-                <p className="pt-4">{letter.location}</p>
-              </details>                              
-            <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-              <summary >Job Tiltle</summary>
-              <p className="pt-4">{letter.job_title}</p>
-            </details>              
-              <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                <summary className="hover:underline">Job Description</summary>
-                <p className="pt-4">{letter.Job_description}</p>
-              </details>                
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md  mb-2">
+                  <summary className="hover:underline">Company</summary>
+                  <p className="pt-4">{letter.company}</p>
+                </details>
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
+                  <summary className="hover:underline">Location</summary>
+                  <p className="pt-4">{letter.location}</p>
+                </details>
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
+                  <summary>Job Tiltle</summary>
+                  <p className="pt-4">{letter.job_title}</p>
+                </details>
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
+                  <summary className="hover:underline">Job Description</summary>
+                  <p className="pt-4">{letter.Job_description}</p>
+                </details>
               </div>
             </details>
 
-
             <div>
-
-
               <div>
                 <div className="bg-slate-200">
                   <textarea
