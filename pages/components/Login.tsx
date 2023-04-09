@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';
 import React from 'react';
 import { auth, provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
@@ -8,6 +9,8 @@ import ParticleBackGround from './ParticleBackGround';
 import { motion } from 'framer-motion';
 
 const cookies = new Cookies();
+const nextjs = 'https://cdn.worldvectorlogo.com/logos/next-js.svg'
+
 
 function Login(props: { setIsAuth: any; }) {
   const { setIsAuth } = props;
@@ -28,10 +31,25 @@ function Login(props: { setIsAuth: any; }) {
         <motion.div
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', duration: 2.75, stiffness: 125 }}
+          transition={{ type: 'spring', duration: 3, delay: 0.5 }}
           className="w-full max-w-sm mx-auto p-6 bg-white rounded-lg shadow-md z-10"
         >
-
+        <div className='flex justify-evenly'>
+        <Image
+        src='https://cdn.worldvectorlogo.com/logos/openai-wordmark.svg'
+        alt='logo'
+        width={120}
+        height={120}
+        className='m-4'
+        />
+        <Image
+        src='https://cdn.worldvectorlogo.com/logos/next-js.svg'
+        alt='logo'
+        width={50}
+        height={50}
+        className='m-4'
+        />
+        </div>
         <h1 className="text-3xl text-center underline text-gray-900 p-2 font-extrabold">
           Ai Coverletter Writer
         </h1>

@@ -49,14 +49,14 @@
       "enable": true,
       "outMode": "bounce",
       "random": false,
-      "speed": 2,
+      "speed": 1,
       "straight": false
     },
     "number": {
       "density": {
         "enable": true
       },
-      "value": 150
+      "value": 125
     },
     "opacity": {
       "value": 0.9
