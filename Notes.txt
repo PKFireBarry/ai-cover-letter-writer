@@ -1,0 +1,18 @@
+- Connect to the openai api and get a response (console.log(response))
+	- get packages we need (npm i openai)
+	- create a file to house the api call (openai.ts)
+	- call the api in the submit function of our react component
+	- return the response
+		- set up api endpoint for calling ai coverletter
+		- pass response to the database
+		- set a check so that only you can see your cover letters in the database
+	- add a loading notification to the handlesubmit function
+		- get packages
+		- 
+- then save the response and all the information to the database 
+- style the app with tailwindcss
+- debug any error and securty flaws
+- deploy to production
+
+
+
