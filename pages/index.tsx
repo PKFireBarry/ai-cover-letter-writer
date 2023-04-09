@@ -23,7 +23,7 @@ export default function Home() {
     window.location.reload();
   };
 
-  if (!isAuth == true) {
+  if (!auth.currentUser) {
     return (
       <div>
         <Login setIsAuth={setIsAuth} />
