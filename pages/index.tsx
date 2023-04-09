@@ -62,7 +62,7 @@ export default function Home() {
           <div>
             <div className="w-screen h-screen bg-slate-500">
               <div className="flex h-16 justify-between items-center p-8 ">
-                <h1 className="text-xl font-bold">Ai Coverletter Writer</h1>
+                <h1 className="text-xl font-bold text-white">Ai Coverletter Writer</h1>
                 <div className="flex items-center space-x-4">
                   <img
                     src={auth.currentUser?.photoURL ?? undefined}
