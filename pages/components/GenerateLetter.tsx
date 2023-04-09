@@ -115,7 +115,7 @@ const GenerateLetter = () => {
             </label>
           </div>
           <label className="flex-1">
-            <span className="text-gray-800 font-semibold">Job Title: </span>
+            <span className="text-gray-800 font-semibold">Job Title </span>
             <input
               type="text"
               className="form-input block w-full mt-1 rounded-md shadow-sm"
@@ -136,8 +136,10 @@ const GenerateLetter = () => {
               onChange={(e) => setJob(e.target.value)}
             ></textarea>
           </label>
+          <details className="mb-4 text-gray-800 font-semibold">
+            <summary >Resume</summary>
+            <div>
           <label className="mb-4">
-            <span className="text-gray-800 font-semibold">Resume</span>
             <textarea
               className="form-textarea block w-full mt-1 rounded-md shadow-sm"
               rows={15}
@@ -145,7 +147,10 @@ const GenerateLetter = () => {
               value={resume}
               onChange={(e) => setResume(e.target.value)}
             ></textarea>
-          </label>
+          </label>              
+            </div>
+          </details>
+
           {/* list of radio button for hocreative you want the cover letter to be */}
           <button
             className="bg-blue-500 pt-4 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"

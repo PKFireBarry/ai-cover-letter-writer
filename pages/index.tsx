@@ -16,7 +16,6 @@ export default function Home() {
   useEffect(() => {
     cookies.set("auth_user", isAuth);
   }, [isAuth]);
-
   //function to remove auth cookie and redirect to login page
   const logout = () => {
     cookies.remove("auth_user");
@@ -71,7 +70,7 @@ export default function Home() {
                     className="w-8 h-8 rounded-full hidden sm:inline-block"
                   />
 
-                  <h1 className="text-sm font-medium hidden sm:inline-block">
+                  <h1 className="text-sm  font-bold hidden sm:inline-block">
                     User: {auth.currentUser?.displayName}
                   </h1>
 
