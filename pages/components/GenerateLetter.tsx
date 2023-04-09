@@ -2,7 +2,7 @@ import { auth, db } from "@/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import React, { useRef, useState } from "react";
 import Cookies from "universal-cookie";
-import { ToastContainer, toast } from "react-toastify";
+import toast from "react-hot-toast";
 import AllLetters from "./AllLetters";
 
 const GenerateLetter = () => {
@@ -27,6 +27,7 @@ const GenerateLetter = () => {
         return;
       }
       setIsLoading(true);
+      const notification = toast.loading("ChatGPT is thinking...");
 
       // Combine all the data into a single object so that it can be sent to the API to create a new cover letter
       let cleanstring = resume;
@@ -63,15 +64,13 @@ const GenerateLetter = () => {
         userImage: auth.currentUser.photoURL,
         email: auth.currentUser.email,
       }).then(() => {
-        setJob("");
-        setCompany("");
-        setLocation("");
-        setJobTitle("");
-        setResume("");
+        //setJob("");
+        //setCompany("");
+        //setLocation("");
+        //setJobTitle("");
+        //setResume("");
         setIsLoading(false);
-        toast.success(
-          "Cover letter generated successfully and saved to database!"
-        );
+        toast.success("ChatGPT has responded!")
       });
     } catch (error) {
       console.error("Error generating or saving cover letter: ", error);

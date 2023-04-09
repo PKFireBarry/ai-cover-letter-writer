@@ -6,6 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 import GenerateLetter from "./components/GenerateLetter";
 import Login from "./components/Login";
 import {auth} from '@/firebase'
+import { Toaster } from "react-hot-toast";
 
 const cookies = new Cookies();
 
@@ -37,13 +38,38 @@ if (!isAuth) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: '',
+          duration: 5000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+
+          // Default options for specific types
+          success: {
+            duration: 5000,
+            theme: {
+              primary: 'green',
+              secondary: 'black',
+            },
+          },
+        }}
+      />
       <div>
       <div className="w-screen h-screen">
       <div className="flex h-12 justify-between items-center p-8">
       <h1>Ai Coverletter Writer</h1>
       <div className='flex '>
         <img src={auth.currentUser?.photoURL} alt='logo' className='w-6 h-6'></img>        
-        <h1>User:{auth.currentUser?.displayName}</h1>
+        <h1>User: {auth.currentUser?.displayName}</h1>
       </div>
       <button onClick={logout}>Logout</button>        
       </div>
