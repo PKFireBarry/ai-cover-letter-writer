@@ -1,4 +1,8 @@
-[![See a demo](https://img.youtube.com/vi/UNoWLYZ3z4Y/default.jpg)](https://youtu.be/UNoWLYZ3z4Y)
+[![See Video demo](https://img.youtube.com/vi/UNoWLYZ3z4Y/default.jpg)](https://youtu.be/UNoWLYZ3z4Y)
+
+
+# AI Cover Letter Writer Built with Next.js + Tailwind CSS
+An AI Cover Letter Writer, the ultimate solution for job seekers looking to land their dream job. Uses cutting-edge AI and NLP technologies to generate personalized cover letters that match the job requirements, saving you time and increasing your chances of success. Say goodbye to the stress and frustration of writing cover letters and hello to a streamlined and professional approach. Invest in your future and try the AI Cover Letter Writer.
 
 
 ## Local Setup
