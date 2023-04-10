@@ -18,6 +18,9 @@
 - debug any error and securty flaws
 	- fix env.local file
 - deploy to production
+- Write the FAQ page
+- make the docuumentation for the github page
+
 
 
 
