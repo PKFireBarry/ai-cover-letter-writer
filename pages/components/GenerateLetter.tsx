@@ -17,6 +17,7 @@ const GenerateLetter = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [temperature, setTemperature] = useState(0);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -34,9 +35,7 @@ const GenerateLetter = () => {
       cleanstring.replace(/[^a-zA-Z0-9 ]/g, "");
       cleanstring.trim();
       const cleanedResume = cleanstring;
-
-      const tempeture = 1;
-      const prompt = `Write me a cover letter for ${jobTitle} at ${company} in ${location}. ${job}. use my resume here to use for my skills and expereince ${cleanedResume}.`;
+      const prompt = `Write me a cover letter for ${jobTitle} at ${company} in ${location}. ${job}. use my resume here to use for my skills and expereince ${resume}.`;
 
       // Send input data to OpenAI API and wait for response
       const response = await fetch("/api/hello", {
@@ -45,11 +44,11 @@ const GenerateLetter = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: prompt, tempeture: tempeture }),
+        body: JSON.stringify({ prompt: prompt, temperature: temperature }),
       });
 
       const data = await response.json();
-      console.log(data);
+      console.log(data.data)
       setAnswer(data.text);
 
       // Save the generated cover letter to Firebase
@@ -70,6 +69,7 @@ const GenerateLetter = () => {
         setLocation("");
         setJobTitle("");
         setResume("");
+        setTemperature(0.1);
         setIsLoading(false);
         toast.success("ChatGPT has responded!");
       });
@@ -90,6 +90,23 @@ const GenerateLetter = () => {
     <div className="flex flex-col md:flex-row items-center md:items-start h-screen bg-slate-200">
       <div className=" md:w-1/3 m-4 ">
         <form className="flex flex-col" onSubmit={handleSubmit}>
+                    <div className="flex items-center mt-4 mb-4">
+  <label className="mr-4">
+    <span className="text-gray-800 font-semibold">Temperature</span>
+    <span className="text-gray-600 text-sm block">({temperature})</span>
+  </label>
+  <div className="flex-1">
+    <input
+      type="range"
+      min="0"
+      max="0.5"
+      step="0.1"
+      value={temperature}
+      onChange={(e) => setTemperature(parseFloat(e.target.value))}
+      className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
+    />
+  </div>
+</div>
           <div className="flex items-center space-x-4">
             <label className="flex-1">
               <span className="text-gray-800 font-semibold">Company</span>
@@ -137,7 +154,7 @@ const GenerateLetter = () => {
             ></textarea>
           </label>
           <details className="mb-4 text-gray-800 font-semibold">
-            <summary >Resume</summary>
+            <summary >Resume Infomation</summary>
             <div>
           <label className="mb-4">
             <textarea
@@ -147,10 +164,13 @@ const GenerateLetter = () => {
               value={resume}
               onChange={(e) => setResume(e.target.value)}
             ></textarea>
-          </label>              
+          </label>
             </div>
           </details>
 
+
+
+            
           {/* list of radio button for hocreative you want the cover letter to be */}
           <button
             className="bg-blue-500 pt-4 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"

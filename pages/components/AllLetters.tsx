@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 function AllLetters() {
   const [letters, setLetters] = useState<
     {
+      resume?: any;
       createdAt?: any;
       coverLetter?: string;
       id?: any;
@@ -120,6 +121,10 @@ function AllLetters() {
                   <summary className="hover:underline">Job Description</summary>
                   <p className="pt-4">{letter.Job_description}</p>
                 </details>
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
+                  <summary className="hover:underline">Resume Information</summary>
+                  <p className="pt-4">{letter.resume}</p>
+                </details>                
               </div>
             </details>
 

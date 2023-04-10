@@ -7,6 +7,7 @@ import GenerateLetter from "./components/GenerateLetter";
 import Login from "./components/Login";
 import { auth } from "@/firebase";
 import { Toaster } from "react-hot-toast";
+import Faq from "./components/Faq";
 
 const cookies = new Cookies();
 
