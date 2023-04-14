@@ -35,7 +35,8 @@ const GenerateLetter = () => {
       cleanstring.replace(/[^a-zA-Z0-9 ]/g, "");
       cleanstring.trim();
       const cleanedResume = cleanstring;
-      const prompt = `Write me a cover letter for ${jobTitle} at ${company} in ${location}. ${job}. use my resume here to use for my skills and expereince ${resume}.`;
+      const prompt = `Write me a cover letter for the position of ${jobTitle} at ${company} located in ${location}. The job requirements are ${job}. My skills and experience are ${resume}, make me the perfect candidate for this role. My name is ${auth.currentUser.displayName}. for the end of the cover letter.`;
+      
 
       // Send input data to OpenAI API and wait for response
       const response = await fetch("/api/hello", {
