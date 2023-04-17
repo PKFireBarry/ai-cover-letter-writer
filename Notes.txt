@@ -14,13 +14,15 @@
 	- make the form float in the center on desktop and not on mobile
 	- style the nav bar and add github link
 - Add A toggle for how creative the cover letter should be
-	-
+- add a word count to the form that changes in real time with the users input
+- add the ability to add a total of 2 links to the from to be displayed in the generated cover letter
 - debug any error and securty flaws
 	- fix env.local file
+
 - deploy to production
 - Write the FAQ page
 - make the docuumentation for the github page
-
+- work toward shifting to gpt-turbo-3.5 for cost savings on api calls
 
 
 

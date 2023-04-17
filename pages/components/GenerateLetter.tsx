@@ -1,6 +1,6 @@
 import { auth, db } from "@/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import toast from "react-hot-toast";
 import AllLetters from "./AllLetters";
@@ -18,6 +18,12 @@ const GenerateLetter = () => {
   const [answer, setAnswer] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [temperature, setTemperature] = useState(0);
+  const [link1, setLink1] = useState("");
+  const [link2, setLink2] = useState("");
+
+  //track the amount of characters and show the number of characters on the screen
+  let words = job + company + location + resume + isLoading + link1 + link2;
+  const count = words.length;
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -31,12 +37,7 @@ const GenerateLetter = () => {
       const notification = toast.loading("ChatGPT is thinking...");
 
       // Combine all the data into a single object so that it can be sent to the API to create a new cover letter
-      let cleanstring = resume;
-      cleanstring.replace(/[^a-zA-Z0-9 ]/g, "");
-      cleanstring.trim();
-      const cleanedResume = cleanstring;
-      const prompt = `Write me a cover letter for the position of ${jobTitle} at ${company} located in ${location}. The job requirements are ${job}. My skills and experience are ${resume}, make me the perfect candidate for this role. My name is ${auth.currentUser.displayName}. for the end of the cover letter.`;
-      
+      const prompt = `Write me a cover letter for the position of ${jobTitle} at ${company} located in ${location}. The job requirements are ${job}. My skills and experience are ${resume}, use them to show why im a great candidate for this role. My name is ${auth.currentUser.displayName}. include these links right above my name ${link1} , ${link2}`;
 
       // Send input data to OpenAI API and wait for response
       const response = await fetch("/api/hello", {
@@ -49,7 +50,7 @@ const GenerateLetter = () => {
       });
 
       const data = await response.json();
-      console.log(data.data)
+      console.log(data.data);
       setAnswer(data.text);
 
       // Save the generated cover letter to Firebase
@@ -64,12 +65,13 @@ const GenerateLetter = () => {
         user: auth.currentUser.displayName,
         userImage: auth.currentUser.photoURL,
         email: auth.currentUser.email,
+        link1: link1,
+        link2: link2,
       }).then(() => {
         setJob("");
         setCompany("");
         setLocation("");
         setJobTitle("");
-        setResume("");
         setTemperature(0.1);
         setIsLoading(false);
         toast.success("ChatGPT has responded!");
@@ -91,23 +93,30 @@ const GenerateLetter = () => {
     <div className="flex flex-col md:flex-row items-center md:items-start h-screen bg-slate-200">
       <div className=" md:w-1/3 m-4 ">
         <form className="flex flex-col" onSubmit={handleSubmit}>
-                    <div className="flex items-center mt-4 mb-4">
-  <label className="mr-4">
-    <span className="text-gray-800 font-semibold">Temperature</span>
-    <span className="text-gray-600 text-sm block">({temperature})</span>
-  </label>
-  <div className="flex-1">
-    <input
-      type="range"
-      min="0"
-      max="0.5"
-      step="0.1"
-      value={temperature}
-      onChange={(e) => setTemperature(parseFloat(e.target.value))}
-      className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
-    />
-  </div>
-</div>
+          <div className="flex justify-evenly">
+            <span className="text-gray-800 font-semibold">Word Count</span>
+            <span className="text-gray-600 text-,d">{count}</span>
+          </div>
+          <div className="flex items-center mt-4 mb-4">
+            <label className="mr-4">
+              <span className="text-gray-800 font-semibold">Temperature</span>
+              <span className="text-gray-600 text-sm block">
+                ({temperature})
+              </span>
+            </label>
+            <div className="flex-1">
+              <input
+                type="range"
+                min="0"
+                max="0.5"
+                step="0.1"
+                value={temperature}
+                onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
+              />
+            </div>
+          </div>
+
           <div className="flex items-center space-x-4">
             <label className="flex-1">
               <span className="text-gray-800 font-semibold">Company</span>
@@ -155,23 +164,41 @@ const GenerateLetter = () => {
             ></textarea>
           </label>
           <details className="mb-4 text-gray-800 font-semibold">
-            <summary >Resume Infomation</summary>
+            <summary>Resume Infomation</summary>
             <div>
-          <label className="mb-4">
-            <textarea
-              className="form-textarea block w-full mt-1 rounded-md shadow-sm"
-              rows={15}
-              placeholder="Copy and Paste Your Resume Information Here"
-              value={resume}
-              onChange={(e) => setResume(e.target.value)}
-            ></textarea>
-          </label>
+              <label className="mb-4">
+                <textarea
+                  className="form-textarea block w-full mt-1 rounded-md shadow-sm"
+                  rows={15}
+                  placeholder="Copy and Paste Your Resume Information Here"
+                  value={resume}
+                  onChange={(e) => setResume(e.target.value)}
+                ></textarea>
+              </label>
+            </div>
+          </details>
+          <details className="mb-4 text-gray-800 font-semibold">
+            <summary>Links</summary>
+            <div>
+              <label>
+                <input
+                  type="text"
+                  className="form-input block w-full mt-1 rounded-md shadow-sm mb-4"
+                  placeholder="Github"
+                  value={link1}
+                  onChange={(e) => setLink1(e.target.value)}
+                />
+                <input
+                  type="text"
+                  className="form-input block w-full mt-1 rounded-md shadow-sm"
+                  placeholder="portfoilo"
+                  value={link2}
+                  onChange={(e) => setLink2(e.target.value)}
+                />
+              </label>
             </div>
           </details>
 
-
-
-            
           {/* list of radio button for hocreative you want the cover letter to be */}
           <button
             className="bg-blue-500 pt-4 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"

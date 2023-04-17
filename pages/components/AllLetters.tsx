@@ -28,6 +28,8 @@ function AllLetters() {
       user?: string;
       userImage?: string;
       email?: string;
+      link1?: string;
+      link2?: string;
     }[]
   >([]);
 
@@ -124,7 +126,12 @@ function AllLetters() {
                 <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
                   <summary className="hover:underline">Resume Information</summary>
                   <p className="pt-4">{letter.resume}</p>
-                </details>                
+                </details>
+                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
+                  <summary className="hover:underline">Links</summary>
+                  <p className="pt-4">{letter.link1}</p>
+                  <p className="pt-4">{letter.link2}</p>
+                </details>                 
               </div>
             </details>
 
