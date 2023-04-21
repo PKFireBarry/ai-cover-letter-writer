@@ -121,13 +121,13 @@ const GenerateLetter = () => {
             <label className="flex-1">
               <span className="text-gray-800 font-semibold">Company</span>
               <input
-                type="text"
-                className="form-input block w-full mt-1 rounded-md shadow-sm"
-                placeholder=" Meta "
-                required
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-              />
+  type="text"
+  className="form-input block w-full mt-1 rounded-md shadow-sm"
+  placeholder="Meta"
+  required
+  value={company}
+  onChange={(e) => setCompany(e.target.value)}
+/>
             </label>
             <label className="flex-1">
               <span className="text-gray-800 font-semibold">Location</span>
