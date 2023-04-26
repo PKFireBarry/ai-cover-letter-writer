@@ -192,8 +192,8 @@ const GenerateLetter = () => {
           <input
             type="range"
             min="0"
-            max="0.5"
-            step="0.1"
+            max="0.50"
+            step="0.01"
             value={temperature}
             onChange={(e) => setTemperature(parseFloat(e.target.value))}
             className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
