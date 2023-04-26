@@ -76,87 +76,79 @@ function AllLetters() {
   };
 
   return (
-    <div className=" overflow-y-scroll h-screen">
-      <h1 className="flex justify-center text-2xl font-bold">Letter History</h1>
-      <div className="bg-slate-300">
-        {letters.map((letter) => (
-          <div
-            className="flex justify-center flex-col border-4 p-4"
-            key={letter.id}
-          >
-            <div className="flex flex-row items-center justify-between border-b-2 border-black p-2">
-              <div className="flex items-center">
-                <img
-                  src={letter.userImage}
-                  className="w-10 h-10 mr-2"
-                  alt={letter.user}
-                />
-                <p className="font-bold">{letter.user}</p>
-              </div>
-
-              <div>
-                <p className=" font-bold ">
-                  Created At:{" "}
-                  {new Date(letter.createdAt?.toDate()).toLocaleString()}
-                </p>
-              </div>
-            </div>
-
-            <details className="bg-slate-100 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-              <summary className="hover:underline">
-                Document Information
-              </summary>
-              <div>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md  mb-2">
-                  <summary className="hover:underline">Company</summary>
-                  <p className="pt-4">{letter.company}</p>
-                </details>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                  <summary className="hover:underline">Location</summary>
-                  <p className="pt-4">{letter.location}</p>
-                </details>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                  <summary>Job Tiltle</summary>
-                  <p className="pt-4">{letter.job_title}</p>
-                </details>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                  <summary className="hover:underline">Job Description</summary>
-                  <p className="pt-4">{letter.Job_description}</p>
-                </details>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                  <summary className="hover:underline">Resume Information</summary>
-                  <p className="pt-4">{letter.resume}</p>
-                </details>
-                <details className="bg-slate-200 hover:bg-sky-300 text-black font-bold py-1 px-2 transition-transform duration-1000 ease-in-out shadow-md mb-2">
-                  <summary className="hover:underline">Links</summary>
-                  <p className="pt-4">{letter.link1}</p>
-                  <p className="pt-4">{letter.link2}</p>
-                </details>                 
-              </div>
-            </details>
-
-            <div>
-              <div>
-                <div className="bg-slate-200">
-                  <textarea
-                    className="w-full text-lg bg-slate-200"
-                    rows={25}
-                    value={letter.coverLetter}
-                  />
-                </div>
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white mt-4 font-semibold py-2 px-4 rounded-md shadow-sm"
-                  onClick={() => handleDelete(letter.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
+<div className="h-screen overflow-y-scroll">
+  <h1 className="text-3xl font-bold text-center mb-8 mt-4 py-4 px-8 bg-white text-gray-800 transition-transform duration-500 ease-in-out shadow-md rounded-md">
+    Letter History
+  </h1>
+  <div className="bg-gray-100  scroll-smooth rounded-lg shadow-lg p-6">
+    {letters.map((letter) => (
+      <div className="border-b-2 border-gray-300 py-4" key={letter.id}>
+        <div className="flex items-center justify-between mb-4 sm:block">
+          <div className="flex items-center">
+            <img
+              src={letter.userImage}
+              className="w-10 h-10 rounded-full mr-4"
+              alt={letter.user}
+            />
+            <p className="font-bold text-lg">{letter.user}</p>
           </div>
-        ))}
+          <div className="text-gray-500 text-sm">
+            <p>Created At:</p>
+            <p>{new Date(letter.createdAt?.toDate()).toLocaleString()}</p>
+          </div>
+        </div>
+
+        <details className="bg-white text-black font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-4 rounded-md">
+  <summary className="hover:underline">
+    Document Information
+  </summary>
+  <div className="mt-2">
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Company</summary>
+      <p className="pt-2">{letter.company}</p>
+    </details>
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Location</summary>
+      <p className="pt-2">{letter.location}</p>
+    </details>
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Job Title</summary>
+      <p className="pt-2">{letter.job_title}</p>
+    </details>
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Job Description</summary>
+      <p className="pt-2">{letter.Job_description}</p>
+    </details>
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Resume Information</summary>
+      <p className="pt-2">{letter.resume}</p>
+    </details>
+    <details className="bg-gray-200 hover:bg-blue-200 text-gray-800 font-bold py-2 px-4 transition-transform duration-500 ease-in-out shadow-md mb-2 rounded-md">
+      <summary className="hover:underline">Links</summary>
+      <p className="pt-2">{letter.link1}</p>
+      <p className="pt-2">{letter.link2}</p>
+    </details>                 
+  </div>
+</details>
+
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <textarea
+            className="w-full text-lg bg-transparent outline-none resize-none"
+            rows={25}
+            value={letter.coverLetter}
+            readOnly
+          />
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white mt-4 font-semibold py-2 px-4 rounded-md shadow-sm"
+            onClick={() => handleDelete(letter.id)}
+          >
+            Delete
+          </button>
+        </div>
       </div>
-    </div>
-  );
-}
+    ))}
+  </div>
+</div>
+  )}
 
 export default AllLetters;

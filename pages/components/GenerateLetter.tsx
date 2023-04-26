@@ -22,7 +22,7 @@ const GenerateLetter = () => {
   const [link2, setLink2] = useState("");
 
   //track the amount of characters and show the number of characters on the screen
-  let words = job + company + location + resume + isLoading + link1 + link2;
+  let words = job + company + location + resume + link1 + link2;
   const count = words.length;
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -90,128 +90,128 @@ const GenerateLetter = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start h-screen bg-slate-200">
-      <div className=" md:w-1/3 m-4 ">
-        <form className="flex flex-col" onSubmit={handleSubmit}>
-          <div className="flex justify-evenly">
-            <span className="text-gray-800 font-semibold">Word Count</span>
-            <span className="text-gray-600 text-,d">{count}</span>
-          </div>
-          <div className="flex items-center mt-4 mb-4">
-            <label className="mr-4">
-              <span className="text-gray-800 font-semibold">Temperature</span>
-              <span className="text-gray-600 text-sm block">
-                ({temperature})
-              </span>
-            </label>
-            <div className="flex-1">
-              <input
-                type="range"
-                min="0"
-                max="0.5"
-                step="0.1"
-                value={temperature}
-                onChange={(e) => setTemperature(parseFloat(e.target.value))}
-                className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
-              />
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <label className="flex-1">
-              <span className="text-gray-800 font-semibold">Company</span>
-              <input
-  type="text"
-  className="form-input block w-full mt-1 rounded-md shadow-sm"
-  placeholder="Meta"
-  required
-  value={company}
-  onChange={(e) => setCompany(e.target.value)}
-/>
-            </label>
-            <label className="flex-1">
-              <span className="text-gray-800 font-semibold">Location</span>
-              <input
-                type="text"
-                className="form-input block w-full mt-1 rounded-md shadow-sm"
-                placeholder="San Francisco, CA"
-                required
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </label>
-          </div>
-          <label className="flex-1">
-            <span className="text-gray-800 font-semibold">Job Title </span>
-            <input
-              type="text"
-              className="form-input block w-full mt-1 rounded-md shadow-sm"
-              placeholder="Full Stack Developer"
-              required
-              value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            <span className="text-gray-800 font-semibold">Job Description</span>
+<div className="flex flex-col md:flex-row items-center md:items-start h-screen bg-gray-100">
+  <div className="md:w-1/3 m-4 bg-white rounded-lg shadow-lg p-6">
+    <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
+      <div className="flex justify-between items-center">
+        <span className="text-gray-800 font-semibold">Word Count</span>
+        <span className="text-gray-600 text-sm">{count}</span>
+      </div>
+      <div className="flex items-center space-x-4">
+        <label className="flex-1">
+          <span className="text-gray-800 font-semibold">Company</span>
+          <input
+            name="company"
+            type="text"
+            className="form-input block w-full mt-1 rounded-md shadow-sm"
+            placeholder="Meta"
+            required
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+          />
+        </label>
+        <label className="flex-1">
+          <span className="text-gray-800 font-semibold">Location</span>
+          <input
+            type="text"
+            className="form-input block w-full mt-1 rounded-md shadow-sm"
+            placeholder="San Francisco, CA"
+            required
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </label>
+      </div>
+      <label className="flex-1">
+        <span className="text-gray-800 font-semibold">Job Title </span>
+        <input
+          type="text"
+          className="form-input block w-full mt-1 rounded-md shadow-sm"
+          placeholder="Full Stack Developer"
+          required
+          value={jobTitle}
+          onChange={(e) => setJobTitle(e.target.value)}
+        />
+      </label>
+      <label>
+        <span className="text-gray-800 font-semibold">Job Description</span>
+        <textarea
+          className="form-textarea block w-full mt-1 rounded-md shadow-sm"
+          rows={15}
+          placeholder="Provide a brief description of the job"
+          required
+          value={job}
+          onChange={(e) => setJob(e.target.value)}
+        ></textarea>
+      </label>
+      <details className="mb-4 text-gray-800 font-semibold">
+        <summary>Resume Information</summary>
+        <div>
+          <label className="mb-4">
             <textarea
               className="form-textarea block w-full mt-1 rounded-md shadow-sm"
               rows={15}
-              placeholder="Provide a brief description of the job"
-              required
-              value={job}
-              onChange={(e) => setJob(e.target.value)}
+              placeholder="Copy and Paste Your Resume Information Here"
+              value={resume}
+              onChange={(e) => setResume(e.target.value)}
             ></textarea>
           </label>
-          <details className="mb-4 text-gray-800 font-semibold">
-            <summary>Resume Infomation</summary>
-            <div>
-              <label className="mb-4">
-                <textarea
-                  className="form-textarea block w-full mt-1 rounded-md shadow-sm"
-                  rows={15}
-                  placeholder="Copy and Paste Your Resume Information Here"
-                  value={resume}
-                  onChange={(e) => setResume(e.target.value)}
-                ></textarea>
-              </label>
-            </div>
-          </details>
-          <details className="mb-4 text-gray-800 font-semibold">
-            <summary>Links</summary>
-            <div>
-              <label>
-                <input
-                  type="text"
-                  className="form-input block w-full mt-1 rounded-md shadow-sm mb-4"
-                  placeholder="Github"
-                  value={link1}
-                  onChange={(e) => setLink1(e.target.value)}
-                />
-                <input
-                  type="text"
-                  className="form-input block w-full mt-1 rounded-md shadow-sm"
-                  placeholder="portfoilo"
-                  value={link2}
-                  onChange={(e) => setLink2(e.target.value)}
-                />
-              </label>
-            </div>
-          </details>
-
-          {/* list of radio button for hocreative you want the cover letter to be */}
-          <button
-            className="bg-blue-500 pt-4 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"
-            type="submit"
-          >
-            Generate Cover letter!
-          </button>
-        </form>
+        </div>
+      </details>
+      <details className="mb-4 text-gray-800 font-semibold">
+        <summary>Links</summary>
+        <div>
+          <label>
+            <input
+              name="link1"
+              type="text"
+              className="form-input block w-full mt-1 rounded-md shadow-sm mb-4"
+              placeholder="Github"
+              value={link1}
+              onChange={(e) => setLink1(e.target.value)}
+            />
+            <input
+              name="link2"
+              type="text"
+              className="form-input block w-full mt-1 rounded-md shadow-sm"
+              placeholder="Portfolio"
+              value={link2}
+              onChange={(e) => setLink2(e.target.value)}
+            />
+          </label>
+        </div>
+      </details>
+      <div className="flex items-center space-x-4">
+        <label>
+          <span className="text-gray-800 font-semibold">Temperature</span>
+          <span className="text-gray-600 text-sm block">
+            ({temperature})
+          </span>
+        </label>
+        <div className="flex-1">
+          <input
+            type="range"
+            min="0"
+            max="0.5"
+            step="0.1"
+            value={temperature}
+            onChange={(e) => setTemperature(parseFloat(e.target.value))}
+            className="w-full h-5 bg-gray-300 rounded-full appearance-none outline-none focus:outline-none active:outline-none"
+          />
+        </div>
       </div>
-      <div className=" md:w-2/3">
-        <AllLetters />
-      </div>
-    </div>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-sm"
+        type="submit"
+      >
+        Generate Cover Letter!
+      </button>
+    </form>
+  </div>
+  <div className="md:w-2/3 h-auto">
+    <AllLetters />
+  </div>
+</div>
   );
 };
 
