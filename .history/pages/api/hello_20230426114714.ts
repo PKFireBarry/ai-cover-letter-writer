@@ -4,7 +4,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
   const prompt = req.body.prompt;
   const temperature = req.body.temperature;
   if (typeof prompt === "string") {
