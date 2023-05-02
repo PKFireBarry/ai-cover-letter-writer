@@ -24,6 +24,7 @@ const GenerateLetter = () => {
   //track the amount of characters and show the number of characters on the screen
   let words = job + company + location + resume + link1 + link2;
   const count = words.length;
+  const token_limit = 4 * 3750;
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -95,7 +96,7 @@ const GenerateLetter = () => {
     <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
       <div className="flex justify-between items-center">
         <span className="text-gray-800 font-semibold">Word Count</span>
-        <span className="text-gray-600 text-sm">{count}</span>
+        <span className="text-gray-600 text-sm"> {count} / {token_limit} </span>
       </div>
       <div className="flex items-center space-x-4">
         <label className="flex-1">
