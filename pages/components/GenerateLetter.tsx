@@ -23,8 +23,10 @@ const GenerateLetter = () => {
 
   //track the amount of characters and show the number of characters on the screen
   let words = job + company + location + resume + link1 + link2;
-  const count = words.length;
-  const token_limit = 4 * 3750;
+  const count = words.length/4;
+
+  //the max number of characters is 4*3750
+  const token_limit = 3750;
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const GenerateLetter = () => {
       const notification = toast.loading("ChatGPT is thinking...");
 
       // Combine all the data into a single object so that it can be sent to the API to create a new cover letter
-      const prompt = `Write me a cover letter for the position of ${jobTitle} at ${company} located in ${location}. The job requirements are ${job}. My skills and experience are ${resume}, use them to show why im a great candidate for this role. My name is ${auth.currentUser.displayName}. include these links right above my name ${link1} , ${link2}`;
+      const prompt = `Write me a cover letter for the position of ${jobTitle} at ${company} located in ${location}. The job requirements are ${job}. My skills and experience are ${resume}, use them to show why im a great candidate for this role. My name is ${auth.currentUser.displayName}. include these links right below my gretting before the start of the letter ${link1} , ${link2}.`;
 
       // Send input data to OpenAI API and wait for response
       const response = await fetch("/api/hello", {
