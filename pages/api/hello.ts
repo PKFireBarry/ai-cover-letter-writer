@@ -36,10 +36,11 @@ export default async function handler(req: any, res: any) {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
-        { role: "system", content: `You are a job searching assistant and you main goal is to write a really convincing and useful cover letter for the user using all the information they give you and this guide material '${instructions}'. follow the guide and write a cover letter for the user`},
+        { role: "system", content: `You are a job searching assistant and you main goal is to write a really convincing and useful cover letter for the user using all the information they give you and this guide material abour what a good cover letter has '${instructions}'. follow the guide and write a cover letter for the user using all the information to make a cohesive first impression`},
         { role: "user", content: prompt }],
         temperature: temperature,
-        //max_tokens: 3900
+        presence_penalty: 0.5,
+        frequency_penalty: 0.5
       });
 
     console.log(response);
