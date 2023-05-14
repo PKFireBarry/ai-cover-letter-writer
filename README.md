@@ -24,6 +24,7 @@ An AI Cover Letter Writer, the ultimate solution for job seekers looking to land
 
 
 ## Features
+ - openai's GPT3.5 Turbo! 
  - User accounts to securely store and manage personal information and cover letters
  - Precise control over cover letter generation to ensure the perfect match for any job application
  - Fully responsive design that allows easy use on any mobile device, ensuring convenient access to your  account and letters on-the-go
