@@ -75,6 +75,7 @@ const GenerateLetter = () => {
         setCompany("");
         setLocation("");
         setJobTitle("");
+        setResume("");
         setTemperature(0.1);
         setIsLoading(false);
         toast.success("ChatGPT has responded!");
