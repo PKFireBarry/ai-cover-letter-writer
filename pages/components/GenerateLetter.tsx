@@ -54,7 +54,9 @@ const GenerateLetter = () => {
 
       const data = await response.json();
       console.log(data.data);
-      setAnswer(data.text);
+      if (data.text) {
+        setAnswer(data.text);
+        
 
       // Save the generated cover letter to Firebase
       addDoc(collection(db, "coverletter"), {
@@ -80,6 +82,7 @@ const GenerateLetter = () => {
         setIsLoading(false);
         toast.success("ChatGPT has responded!");
       });
+    }
     } catch (error) {
       console.error("Error generating or saving cover letter: ", error);
       toast.error(
@@ -88,7 +91,7 @@ const GenerateLetter = () => {
       setIsLoading(false);
     }
   };
-
+  
   const toggleForm = () => {
     setIsVisible(!isVisible);
   };
