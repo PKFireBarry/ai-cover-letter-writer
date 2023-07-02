@@ -62,14 +62,14 @@ const GenerateLetter = () => {
         company: company,
         location: location,
         job_title: jobTitle,
-        resume: resume,
+        //resume: resume,
         coverLetter: data.text,
         createdAt: serverTimestamp(),
         user: auth.currentUser.displayName,
         userImage: auth.currentUser.photoURL,
         email: auth.currentUser.email,
-        link1: link1,
-        link2: link2,
+        //link1: link1,
+        //link2: link2,
       }).then(() => {
         setJob("");
         setCompany("");
